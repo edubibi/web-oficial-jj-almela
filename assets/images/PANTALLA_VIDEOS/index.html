@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidGlass - Premium Video Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="glass-container">
+        <header>
+            <h1>VidGlass<span>Player</span></h1>
+            <p>Visualización premium para tus contenidos</p>
+        </header>
+
+        <section class="controls">
+            <div class="tab-group">
+                <button id="btn-local" class="tab-btn active">Video Local</button>
+                <button id="btn-youtube" class="tab-btn">YouTube</button>
+            </div>
+
+            <div id="input-area">
+                <!-- Local file input -->
+                <div id="local-control" class="input-control">
+                    <label for="video-upload" class="file-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                        </svg>
+                        Elegir archivo de video
+                    </label>
+                    <input type="file" id="video-upload" accept="video/*" hidden>
+                </div>
+
+                <!-- YouTube input -->
+                <div id="youtube-control" class="input-control hidden">
+                    <input type="text" id="youtube-url" placeholder="Pega el link de YouTube aquí...">
+                    <button id="btn-load-yt">Cargar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-screen">
+            <div id="player-container" class="player-aspect-ratio">
+                <div class="placeholder-msg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <polygon points="10 8 16 12 10 16 10 8" />
+                    </svg>
+                    <p>Listo para proyectar</p>
+                </div>
+                <video id="local-video" controls class="hidden"></video>
+                <div id="youtube-player" class="hidden"></div>
+            </div>
+        </section>
+
+        <footer>
+            <button id="btn-embed" class="secondary-btn">Obtener código de inserción</button>
+        </footer>
+    </main>
+
+    <!-- Modal for Embed Code -->
+    <div id="embed-modal" class="modal hidden">
+        <div class="modal-content glass-container">
+            <h2>Código para tu Web</h2>
+            <textarea id="embed-code" readonly></textarea>
+            <div class="modal-actions">
+                <button id="btn-copy">Copiar Código</button>
+                <button id="btn-close-modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

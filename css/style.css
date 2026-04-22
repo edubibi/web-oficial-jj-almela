@@ -1,0 +1,1552 @@
+/* =========================================
+   VARIABLES Y PALETA DE COLORES "ESTUDIO"
+   ========================================= */
+:root {
+    /* Colores Principales aprobados */
+    --color-burdeos: #7C2A3B;     /* Elegante y cálido */
+    --color-verde-cali: #4A5D4A;  /* Verde sobrio que usaremos del estudio */
+    --color-gris-perla: #E2E2E2;
+    --color-hueso: #F9F6EE;      /* El color hueso solicitado */
+    --color-blanco: #FFFFFF;
+    
+    /* Texturas y acentos */
+    --color-madera-oscura: #3A2B20;
+    --color-ladrillo-crudo: #B56B5A;
+    --color-texto-principal: #333333;
+    
+    /* Fuentes */
+    --font-titulos: 'Playfair Display', serif; /* Aporta Glamour */
+    --font-textos: 'Montserrat', sans-serif;   /* Limpia, moderna y legible */
+}
+
+/* =========================================
+   RESET BASICO
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-textos);
+    color: var(--color-texto-principal);
+    background-color: var(--color-gris-perla);
+    line-height: 1.6;
+}
+
+/* =========================================
+   NAVEGACIÓN (Glamour y sobriedad)
+   ========================================= */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo-img {
+    height: 75px; 
+    width: auto;
+    /* Al ser líneas finas (una firma), una sombra gigante solo genera "humo" visual. 
+       Aplicamos una sombra corta, muy nítida y separada (offset) para que el trazo parezca físicamente despegado del menú. */
+    filter: brightness(0) invert(0.3) drop-shadow(4px 6px 4px rgba(0,0,0,0.7));
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.nav-logo-img:hover {
+    /* Efecto hover: se despega y sube aún más */
+    filter: brightness(0) invert(0.2) drop-shadow(6px 8px 5px rgba(0,0,0,0.8));
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-madera-oscura);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-burdeos);
+}
+
+/* =========================================
+   EFECTO SINUSOIDAL EN EL MENÚ (Onda musical)
+   ========================================= */
+/* Aplicamos geometría de onda seno a cada elemento de la lista para crear la curva que baja y luego sube */
+.nav-links li:nth-child(1) { transform: translateY(0px); }    /* Inicio */
+.nav-links li:nth-child(2) { transform: translateY(12px); }   /* Sobre Mí */
+.nav-links li:nth-child(3) { transform: translateY(20px); }   /* Mi música */
+.nav-links li:nth-child(4) { transform: translateY(14px); }   /* Mis vídeos */
+.nav-links li:nth-child(5) { transform: translateY(0px); }    /* Don't worry */
+.nav-links li:nth-child(6) { transform: translateY(-12px); }  /* Mis gustos */
+.nav-links li:nth-child(7) { transform: translateY(-20px); }  /* Imágenes */
+.nav-links li:nth-child(8) { transform: translateY(-10px); }  /* Contacto */
+
+/* =========================================
+   ENTRADA / HERO SECTION (Glamour)
+   ========================================= */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Matemáticas Puras: Textura ladrillo inconsútil real + luz viñeta CSS generada por código */
+    background-color: #b0b0b0;
+    background-image: 
+        radial-gradient(circle at 40% 40%, rgba(255,255,255,0.85) 0%, rgba(5,5,5,0.98) 100%),
+        url('../assets/images/real_brick.png');
+    background-size: cover, auto;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: overlay;
+    color: var(--color-blanco);
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+/* Capa de velo quitada a petición */
+.hero-overlay {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* =========================================
+   DISEÑO 3 COLUMNAS ASIMÉTRICO (Boceto Photoshop)
+   ========================================= */
+.hero-layout {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Margen Mayor Izquierdo */
+.left-margin {
+    flex: 0 0 22%; /* Volvemos al 22% para el claim */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Empujamos el texto hacia la foto central */
+}
+
+/* =========================================
+   SLOGAN / CLAIM (Textos de Portada)
+   ========================================= */
+.hero-claim-container {
+    padding-right: 1.5rem;
+    border-right: 3px solid var(--color-burdeos); /* Fina línea elegante de separación cromática */
+    /* Efecto de aparición */
+    animation: fadeIn 3s ease-in-out;
+}
+
+.hero-claim {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 3rem; /* Tamaño de revista editorial */
+    color: var(--color-blanco); /* Mismo blanco puro empleado en las redes sociales */
+    line-height: 1.3;
+    text-align: right;
+    margin: 0;
+    font-weight: 400;
+    /* Misma sombra oscura, dura y corta que los iconos para tener la máxima nitidez */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================================
+   PANTALLAS DE VÍDEO DESTACADOS (En zona Sobre Mí)
+   ========================================= */
+.video-highlight-section {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+    background-color: transparent; /* Mantenemos la pureza de la pared de ladrillo si el fondo llega hasta aquí */
+    margin-top: -50px; /* Un poco de solapamiento elegante */
+}
+
+.video-screens-container {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.glass-video-screen {
+    position: relative;
+    width: 450px; /* Más grandes ahora que están en horizontal */
+    aspect-ratio: 16 / 9;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    transition: 0.3s;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.glass-video-screen:hover {
+    transform: scale(1.05) translateX(10px);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+}
+
+.glass-video-screen:hover .video-thumb {
+    opacity: 1;
+}
+
+.glass-video-screen:hover .play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Foto Central Gigante y Sistema de Superposición de Capas */
+.center-image {
+    flex: 1; /* Ocupa automáticamente todo el centro enorme */
+}
+
+.photo-composition {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+
+.base-layer {
+    width: 100%; /* Todo el ancho de su contenedor central */
+    display: block;
+    height: auto;
+    /* Sombra proyectada exacta al boceto: pronunciada abajo y a la derecha */
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.7), 5px 5px 15px rgba(0,0,0,0.5);
+    border-radius: 2px;
+}
+
+/* Capa de la chica ceñida exactamente al cuadro del piano (sin restar protagonismo) */
+.overlay-layer {
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    height: 100%; 
+    right: 0; 
+    width: auto;
+    opacity: 0.72; 
+    z-index: 10;
+    pointer-events: none; 
+    /* Vuelvo a añadir una sutil sombra lateral para integrarla en el piano */
+    filter: drop-shadow(-5px 0px 15px rgba(0,0,0,0.3));
+}
+
+/* Margen Menor Derecho */
+.right-margin {
+    flex: 0 0 8%; /* Deja exactamente el 8% de la pantalla para los iconos de redes */
+    display: flex;
+    align-items: center; /* Centra los iconos con el piano */
+    justify-content: center;
+}
+
+/* =========================================
+   ICONOS SOCIALES VERTICALES
+   ========================================= */
+.social-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Mucha separación para que respiren en la inmensidad de la pared */
+}
+
+.social-vertical a {
+    color: var(--color-blanco); /* Blanco puro y directo para la máxima visibilidad */
+    font-size: 1.7rem; /* Un pellizco más grandes por si acaso */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0.9; /* Prácticamente sólidos */
+    /* Pequeñísima sombra de contraste oscura por si alguna parte del ladrillo gris es muy clara */
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.6));
+}
+
+.social-vertical a:hover {
+    color: var(--color-blanco);
+    opacity: 1;
+    transform: scale(1.2) translateY(-2px); /* Se amplían y levantan al pasar el ratón */
+    /* Resplandor sofisticado más pronunciado */
+    filter: drop-shadow(0px 5px 12px rgba(255,255,255,0.6));
+}
+
+.hero-logo-img {
+    max-width: 500px; /* Grande e imponente */
+    width: 90%;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.6)); /* Sombra para resaltar sobre cualquier fondo */
+}
+
+.hero-subtitle {
+    font-family: var(--font-textos);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: var(--color-gris-perla);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: transparent;
+    border: 2px solid var(--color-blanco);
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-blanco);
+    color: var(--color-burdeos);
+}
+
+/* =========================================
+   SECCIONES COMUNES
+   ========================================= */
+.content-section {
+    padding: 6rem 2rem;
+}
+
+.bg-brick-white {
+    background-color: var(--color-gris-perla); /* Emulando fondo claro texturizado temporalmente */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-elegant {
+    background: var(--color-blanco);
+    padding: 4rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    border-radius: 4px;
+}
+
+.section-title {
+    font-family: var(--font-titulos);
+    font-size: 2.5rem;
+    color: var(--color-madera-oscura);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-burdeos);
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   PIE DE PÁGINA (Footer)
+   ========================================= */
+.main-footer {
+    padding: 100px 5%; /* Aún más aire vertical */
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-madera-oscura); /* Cambiado a oscuro para máxima visibilidad */
+    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Línea oscura sutil */
+}
+
+.footer-container {
+    width: 90%; /* Forzamos un 10% de aire total (5% por lado) */
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.footer-left {
+    text-transform: lowercase;
+}
+
+.footer-right {
+    font-weight: 300;
+    text-align: right;
+}
+
+
+.bio-section-red-brick {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 150px 5%;
+    /* LADRILLO EDUARDO: Generado a medida para ser 100% literal */
+    background-color: #d18a67; 
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%),
+        url('../assets/images/ladrillo_eduardo.png');
+    background-size: cover, 500px;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: multiply;
+    overflow: hidden;
+}
+
+.container-float {
+    width: 100%;
+    max-width: 1400px; /* Más ancho para el split layout */
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.bio-flex-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+}
+
+.floating-white-box-wrapper {
+    flex: 0 0 65%; /* Ocupa aproximadamente el 65% (un tercio menos de lo que antes podría ocupar) */
+}
+
+.neon-jazz-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.neon-svg {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.neon-tri {
+    filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 15px #fff);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 3s forwards ease-in-out;
+}
+
+.neon-trumpet {
+    filter: drop-shadow(0 0 5px #00d2ff) drop-shadow(0 0 15px #00d2ff);
+    opacity: 0;
+    animation: fadeInNeon 2s 1s forwards;
+}
+
+.neon-text-pink {
+    fill: #ff00de;
+    font-family: var(--font-titulos);
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+    filter: drop-shadow(0 0 5px #ff00de) drop-shadow(0 0 10px #ff00de);
+    opacity: 0;
+    animation: fadeInNeon 2s 2s forwards, neonFlicker 4s infinite alternate;
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeInNeon {
+    to { opacity: 1; }
+}
+
+@keyframes neonFlicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #ff00de) drop-shadow(0 0 10px #ff00de); }
+    20%, 24%, 55% { opacity: 0.7; filter: none; }
+}
+
+.neon-jazz-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Destello ambiental en la pared detrás del neón */
+.neon-jazz-side::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.15) 0%, rgba(0, 191, 255, 0.1) 50%, transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+    animation: pulseGlow 8s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes neonFlicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.8; }
+}
+
+.floating-quote {
+    color: #ffffff;
+    font-family: var(--font-titulos);
+    font-size: 2.8rem; /* Instrument Serif es algo más pequeña visualmente */
+    font-style: italic;
+    text-align: right;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 3.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5);
+    animation: fadeIn 3s ease-out;
+    letter-spacing: -0.5px;
+}
+
+.floating-quote cite {
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-family: var(--font-principal);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.floating-notes {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    width: 280px;
+    height: auto;
+    z-index: 10;
+    opacity: 0.95;
+    transform: rotate(-8deg);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    animation: floatingNotes 6s ease-in-out infinite;
+}
+
+@keyframes floatingNotes {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(-5deg) translateY(-10px); }
+}
+
+.floating-white-box {
+    background-color: var(--color-blanco);
+    padding: 80px 10%;
+    max-width: 800px; /* Reducción de aprox un tercio (antes 1100px) */
+    margin-left: 0; /* Pegado a la izquierda */
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.1),
+        0 30px 80px rgba(0,0,0,0.4);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden; /* Importante para que las figuras no se salgan */
+    animation: fadeInPage 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bio-shapes-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bio-shapes-bg svg {
+    width: 100%;
+    height: 100%;
+}
+
+.floating-white-box::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(124, 42, 59, 0.03); /* Marco interno casi invisible de color burdeos */
+    pointer-events: none;
+}
+
+@keyframes fadeInPage {
+    0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.bio-content-horizontal {
+    display: flex;
+    flex-direction: column;
+}
+
+.elegant-text {
+    font-size: 20px; /* Tamaño exacto solicitado por Eduardo */
+    color: var(--color-texto-principal);
+    font-family: var(--font-titulos);
+    font-style: normal;
+    line-height: 1.6; /* Un pelín más compacto para 20px */
+    margin-bottom: 1.8rem;
+    text-align: justify;
+    letter-spacing: 0.1px;
+    font-weight: 400;
+}
+
+.first-paragraph {
+    position: relative;
+}
+
+.drop-cap {
+    float: left;
+    font-family: var(--font-titulos);
+    font-size: 52px; /* Proporción elegante al doble + un poco de la J normal */
+    line-height: 45px;
+    padding-right: 12px;
+    padding-top: 4px;
+    color: var(--color-burdeos);
+    font-weight: 700;
+}
+
+
+/* ==========================================================================
+   PÁGINA: MI MÚSICA
+   ========================================================================== */
+
+.music-page {
+    background: var(--color-hueso); /* Restored precisely as requested */
+    min-height: 100vh;
+}
+
+.music-hero {
+    padding: 140px 0 60px;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(249, 246, 238, 0.4), var(--color-hueso));
+}
+
+.glamour-title {
+    font-family: var(--font-titulos);
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-madera-oscura); /* Dark for light background */
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-weight: 400;
+}
+
+.subtitle-serif {
+    font-family: var(--font-titulos);
+    font-size: 1.5rem;
+    color: var(--color-burdeos);
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Grilla de Álbumes */
+.albums-section {
+    padding-bottom: 100px;
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 20px;
+}
+
+.album-card-wrapper {
+    perspective: 1000px;
+}
+
+.album-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.album-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.album-cover-container {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.album-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.album-card:hover .album-cover-img {
+    transform: scale(1.1);
+}
+
+.album-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(124, 42, 59, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.album-card:hover .album-overlay {
+    opacity: 1;
+}
+
+.play-icon-huge {
+    font-size: 3.5rem;
+    color: white;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+}
+
+.album-info h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.6rem;
+    color: var(--color-madera-oscura); /* Dark for bone background */
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.album-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-neon-mini {
+    background: transparent;
+    border: 1px solid var(--color-burdeos);
+    color: var(--color-burdeos);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-neon-mini:hover {
+    background: var(--color-burdeos);
+    color: white;
+    box-shadow: 0 0 15px var(--color-burdeos);
+}
+
+.btn-outline-mini {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline-mini:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ==========================================================================
+   REPRODUCTOR FULLSCREEN (GLASSMORPHISM)
+   ========================================================================== */
+
+.music-player-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(124, 42, 59, 0.95); /* Burgundy Maroon Background */
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.music-player-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.close-player-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    z-index: 2100;
+}
+
+.close-player-btn:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: var(--color-burdeos);
+}
+
+.player-content-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    gap: 40px;
+    height: 85vh;
+    animation: slideInUp 0.6s ease;
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Parte Izquierda: Player */
+.player-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-glass-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid white; /* Thick white border requested */
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+
+.player-cover-ring {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 2px solid var(--color-burdeos);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.music-player-overlay.playing .player-cover-ring {
+    opacity: 0.2;
+    animation: playerPulse 4s infinite;
+}
+
+@keyframes playerPulse {
+    0% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.2); opacity: 0.05; }
+    100% { transform: scale(1); opacity: 0.2; }
+}
+
+.player-main-cover {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+    margin-bottom: 40px;
+    z-index: 2;
+}
+
+.music-player-overlay.playing .player-main-cover {
+    animation: playerRotate 30s linear infinite;
+}
+
+@keyframes playerRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.player-track-info h2 {
+    font-family: var(--font-titulos);
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.album-subtitle {
+    color: var(--color-burdeos);
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Controles de Progreso */
+.player-controls-area {
+    width: 100%;
+    max-width: 450px;
+}
+
+.player-progress-container {
+    margin-bottom: 30px;
+}
+
+.player-time-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 10px;
+    font-family: monospace;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-burdeos), #ff6b6b);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Botones */
+.player-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.p-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.8rem;
+    transition: 0.3s;
+}
+
+.p-btn:hover {
+    color: var(--color-burdeos);
+    transform: scale(1.2);
+}
+
+.p-btn.primary {
+    width: 80px;
+    height: 80px;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.p-btn.primary:hover {
+    background: var(--color-burdeos);
+    color: white;
+    transform: scale(1.1);
+}
+
+.pause-icon { display: none; }
+.music-player-overlay.playing .play-icon { display: none; }
+.music-player-overlay.playing .pause-icon { display: block; }
+
+/* Parte Derecha: Tracklist */
+.player-right {
+    flex: 0.8;
+}
+
+.playlist-glass-card {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08); /* Reverted from bone-style if changed */
+    backdrop-filter: blur(20px);
+    border: 3px solid white; /* Thick white border requested */
+    border-radius: 30px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.playlist-glass-card h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 12px;
+    color: var(--color-blanco); /* Corrected for Dark background */
+}
+
+.player-tracklist {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 15px;
+}
+
+.player-tracklist::-webkit-scrollbar {
+    width: 5px;
+}
+
+.player-tracklist::-webkit-scrollbar-thumb {
+    background: var(--color-burdeos);
+    border-radius: 10px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.track-item:hover {
+    background: rgba(0,0,0,0.06);
+    transform: translateX(10px);
+}
+
+.track-item.active {
+    background: rgba(124, 42, 59, 0.1);
+    border-left: 5px solid var(--color-burdeos);
+    border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.track-num {
+    margin-right: 20px;
+    font-family: monospace;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    color: var(--color-burdeos);
+}
+
+.track-name {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-blanco); /* White for dark theme */
+}
+
+@media (max-width: 992px) {
+    .music-player-overlay {
+        overflow-y: auto;
+        padding: 40px 0;
+    }
+    .player-content-wrapper {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+    }
+    .player-left, .player-right {
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* =========================================
+   REVISIÓN MÓVIL (Responsividad)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Navegación */
+    .nav-container {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    
+    .nav-logo-img {
+        height: 60px; 
+        margin-bottom: 1rem;
+    }
+    
+    .nav-links {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.3rem 1rem;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    .nav-links li {
+        transform: none !important;
+        margin: 0 !important;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 8px 5px;
+        display: block;
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 5px;
+    }
+
+    /* Navegación no fija para dejar espacio */
+    .main-nav {
+        position: absolute !important;
+        background-color: rgba(255, 255, 255, 0.98);
+    }
+
+    /* Hero & Bio Sections */
+    .hero-section, 
+    .music-hero, 
+    .bio-section-red-brick {
+        padding-top: 320px !important; /* Reducido ya que el menú ahora sube al hacer scroll */
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    .hero-layout, .bio-flex-layout {
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    .floating-quote, .floating-quote p {
+        font-size: 1.4rem !important; 
+        text-align: center !important;
+        margin: 0 auto 1.5rem !important;
+        position: static !important;
+        width: 90% !important;
+        line-height: 1.3 !important;
+    }
+
+    .floating-notes {
+        display: none !important;
+    }
+
+    .floating-white-box-wrapper {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .floating-white-box {
+        padding: 40px 1.5rem !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    .neon-jazz-side {
+        width: 100% !important;
+        flex: none !important;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .neon-svg {
+        max-width: 250px !important;
+    }
+
+    .elegant-text {
+        font-size: 18px !important;
+        text-align: left !important;
+    }
+
+    .drop-cap {
+        font-size: 3.5rem !important;
+        line-height: 3rem !important;
+    }
+
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .footer-right {
+        text-align: center;
+    }
+    .main-footer {
+        padding: 40px 10%;
+    }
+}
+
+
+/* ==========================================================================
+   SECCIÓN: ATAJOS GEOMÉTRICOS (PORTADA)
+   ========================================================================== */
+
+.geometric-shortcuts-section {
+    padding: 100px 5%;
+    background: linear-gradient(to bottom, var(--color-gris-perla), #d8d8d8);
+    position: relative;
+    z-index: 10; /* Asegura que las formas pasen por ENCIMA de la sección anterior */
+}
+
+.shortcuts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 600px; /* Suficiente espacio para el escalonamiento asimétrico */
+}
+
+/* Base de las formas */
+.shape-shortcut {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.shape-shortcut:hover {
+    transform: scale(1.1) translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.shape-shortcut span {
+    font-family: var(--font-titulos);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Individual Shapes Styling (based on user image) */
+
+/* MIS GUSTOS - Círculo Top-Left */
+.shape-gustos {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    top: -210px; /* Subido mucho más para que se vea claramente sobre el piano */
+    left: 10%;
+    background: rgba(124, 42, 59, 0.1); /* Burdeos suave */
+}
+
+.shape-gustos:hover {
+    background: rgba(124, 42, 59, 0.2);
+}
+
+.shape-gustos span {
+    color: var(--color-burdeos);
+}
+
+/* IMÁGENES - Círculo Middle-Right */
+.shape-imagenes {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    top: -110px; 
+    right: 15%;
+    background: rgba(58, 43, 32, 0.45); /* Oscurecido para contraste */
+    border: 2px solid rgba(255, 255, 255, 0.4); /* Borde más nítido */
+}
+
+.shape-imagenes:hover {
+    background: rgba(58, 43, 32, 0.6);
+}
+
+.shape-imagenes span {
+    color: var(--color-hueso); /* Cambiado a claro para que se lea sobre el fondo oscuro */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* COLABORACIONES INTERACTIVAS (Nuevos estilos para tarjetas montadas) */
+.colab-mounted-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 4rem;
+    flex-wrap: wrap; /* Para que en móviles bajen */
+}
+
+.colab-card {
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 3.5rem 2.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 380px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* Efecto Montado (Solapamiento) */
+.colab-card:not(:first-child) {
+    margin-left: -30px;
+}
+
+/* Z-Index para que la que se pasa por encima resalte */
+.colab-card:nth-child(1) { z-index: 10; }
+.colab-card:nth-child(2) { z-index: 20; }
+.colab-card:nth-child(3) { z-index: 30; }
+
+.colab-card:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-10px) scale(1.02);
+    z-index: 100 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+/* Responsividad para móviles (quitar solapamiento) */
+@media (max-width: 768px) {
+    .colab-mounted-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .colab-card {
+        width: 100%;
+        max-width: 350px;
+        margin-left: 0 !important;
+    }
+}
+
+.colab-details-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+}
+
+.colab-details-panel.active {
+    max-height: 1500px;
+    opacity: 1;
+    margin-top: 2rem;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.colab-detail-content {
+    color: var(--color-texto-principal);
+    font-family: var(--font-textos);
+}
+
+/* COLABORACIONES - Óvalo Bottom-Center */
+.shape-colaboraciones {
+    width: 450px;
+    height: 220px;
+    border-radius: 50% / 50%; /* Pure Oval */
+    bottom: 240px; /* Subido proporcionalmente */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(249, 246, 238, 0.4); /* Hueso suave */
+}
+
+.shape-colaboraciones:hover {
+    transform: translateX(-50%) scale(1.1) translateY(-10px);
+    background: rgba(249, 246, 238, 0.7);
+}
+
+.shape-colaboraciones span {
+    color: var(--color-burdeos);
+}
+
+/* Responsividad para las formas */
+@media (max-width: 992px) {
+    .shortcuts-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        min-height: auto;
+    }
+    .shape-shortcut {
+        position: static !important;
+        transform: none !important;
+        width: 250px !important;
+        height: 250px !important;
+    }
+    .shape-colaboraciones {
+        height: 180px !important;
+        width: 320px !important;
+    }
+}
+
+/* TARJETAS DE ARTISTAS (MIS GUSTOS) */
+.artist-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.artist-card-header {
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.artist-card-header h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--color-burdeos);
+    letter-spacing: 1px;
+}
+
+.artist-card-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1.2; /* Ligeramente vertical */
+    overflow: hidden;
+    position: relative;
+    background: rgba(0,0,0,0.05); 
+}
+
+.artist-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.artist-card:hover .artist-card-photo img {
+    transform: scale(1.1);
+}
+
+.artist-card-photo::after {
+    content: "FOTO ARTISTA";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    opacity: 0.15;
+    z-index: 1;
+    font-family: var(--font-titulos);
+}
