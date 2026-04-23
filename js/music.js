@@ -152,47 +152,43 @@ function loadTrack(index) {
     });
 }
 
-function togglePlay() {
-    const panel = document.getElementById('musicPlayerPanel');
-    const isCurrentlyPlaying = panel.classList.contains('playing');
+// Listeners automáticos para sincronizar la interfaz con el sonido real
+audio.onplay = () => {
+    isPlaying = true;
+    document.getElementById('musicPlayerPanel').classList.add('playing');
+};
 
+audio.onpause = () => {
+    isPlaying = false;
+    document.getElementById('musicPlayerPanel').classList.remove('playing');
+};
+
+audio.onended = () => {
+    nextTrack();
+};
+
+function togglePlay() {
     if (!audio.src || audio.src.endsWith('undefined')) {
         loadTrack(0);
     }
     
-    if (isCurrentlyPlaying) {
-        // Si la interfaz dice que suena, la paramos
-        audio.pause();
-        isPlaying = false;
-        panel.classList.remove('playing');
-    } else {
-        // Si la interfaz dice que está parada, la arrancamos
-        audio.play().then(() => {
-            isPlaying = true;
-            panel.classList.add('playing');
-        }).catch(err => {
-            // Reintento por si acaso
+    if (audio.paused) {
+        audio.play().catch(err => {
+            // Reintento manual por si el navegador bloquea la promesa
             audio.play();
-            panel.classList.add('playing');
         });
+    } else {
+        audio.pause();
     }
 }
 
 function playTrack() {
     if (!audio.src || audio.src.endsWith('undefined')) return;
-    audio.play().then(() => {
-        isPlaying = true;
-        document.getElementById('musicPlayerPanel').classList.add('playing');
-    }).catch(err => {
-        audio.play();
-        document.getElementById('musicPlayerPanel').classList.add('playing');
-    });
+    audio.play().catch(err => audio.play());
 }
 
 function pauseTrack() {
     audio.pause();
-    isPlaying = false;
-    document.getElementById('musicPlayerPanel').classList.remove('playing');
 }
 
 function nextTrack() {
