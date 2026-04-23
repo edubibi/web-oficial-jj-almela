@@ -153,20 +153,28 @@ function loadTrack(index) {
 }
 
 function togglePlay() {
+    const panel = document.getElementById('musicPlayerPanel');
+    const isCurrentlyPlaying = panel.classList.contains('playing');
+
     if (!audio.src || audio.src.endsWith('undefined')) {
-        // Si no hay nada cargado, cargamos la primera
         loadTrack(0);
     }
     
-    if (audio.paused) {
-        audio.play().then(() => {
-            isPlaying = true;
-            document.getElementById('musicPlayerPanel').classList.add('playing');
-        }).catch(err => console.log("Error playing:", err));
-    } else {
+    if (isCurrentlyPlaying) {
+        // Si la interfaz dice que suena, la paramos
         audio.pause();
         isPlaying = false;
-        document.getElementById('musicPlayerPanel').classList.remove('playing');
+        panel.classList.remove('playing');
+    } else {
+        // Si la interfaz dice que está parada, la arrancamos
+        audio.play().then(() => {
+            isPlaying = true;
+            panel.classList.add('playing');
+        }).catch(err => {
+            // Reintento por si acaso
+            audio.play();
+            panel.classList.add('playing');
+        });
     }
 }
 
@@ -175,7 +183,10 @@ function playTrack() {
     audio.play().then(() => {
         isPlaying = true;
         document.getElementById('musicPlayerPanel').classList.add('playing');
-    }).catch(err => console.log("Error playing:", err));
+    }).catch(err => {
+        audio.play();
+        document.getElementById('musicPlayerPanel').classList.add('playing');
+    });
 }
 
 function pauseTrack() {
