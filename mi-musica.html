@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=v4.9-auto-sync">
+    <link rel="stylesheet" href="css/style.css?v=v5.0-final-attempt">
 </head>
 <body class="music-page">
 
@@ -159,6 +159,119 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/app.js"></script><script src="js/music.js"></script>
+    <script>
+        // Lógica integrada v5.0 - Sin archivos externos para evitar bloqueos
+        const albums = {
+            'alm-1': {
+                title: 'Some Memories (ALM 1)',
+                artist: 'JJ Almela',
+                cover: 'assets/images/CARATULAS ALMELA VIDEOS ANTERIORES/00BOAVISTA-MAGIC-1000.jpg',
+                tracks: [
+                    { title: "Tres Encuentros", file: "SOME MEMORIES LP/01Tres Encuentros.mp3" },
+                    { title: "Boavista Magic", file: "SOME MEMORIES LP/02Boavista Magic.mp3" },
+                    { title: "Buscándote", file: "SOME MEMORIES LP/03Buscándote.mp3" },
+                    { title: "Una Vida Sin Ti", file: "SOME MEMORIES LP/04Una Vida Sin Ti.mp3" },
+                    { title: "Mi Calle y Tu", file: "SOME MEMORIES LP/05Mi Calle y Tu.mp3" },
+                    { title: "Matar al Ángel", file: "SOME MEMORIES LP/06Matar al Ángel.mp3" },
+                    { title: "No Se por Que Te Perdí", file: "SOME MEMORIES LP/07No Se por Que Te Perdí.mp3" }
+                ]
+            },
+            'alm-2': {
+                title: 'Chillout Sweet (ALM 2)',
+                artist: 'JJ Almela',
+                cover: 'assets/images/chillout_sweet_cover.jpg',
+                tracks: [
+                    { title: "Sin Fronteras", file: "CHILLOUT SWEET LP/01Sin Fronteras (DropOut).mp3" },
+                    { title: "Another day", file: "CHILLOUT SWEET LP/02Another day.mp3" },
+                    { title: "Sierra Gudar", file: "CHILLOUT SWEET LP/03Sierra Gudar.mp3" },
+                    { title: "Andanzas de Rocinante", file: "CHILLOUT SWEET LP/04Andanzas de Rocinante.mp3" },
+                    { title: "Chill below zero", file: "CHILLOUT SWEET LP/05Chill below zero.mp3" },
+                    { title: "Main Memory", file: "CHILLOUT SWEET LP/06Main Memory.mp3" },
+                    { title: "Long road", file: "CHILLOUT SWEET LP/07Long road.mp3" },
+                    { title: "Desert Route", file: "CHILLOUT SWEET LP/08Desert Route.mp3" },
+                    { title: "Estación de paso", file: "CHILLOUT SWEET LP/09Estación_de_paso.mp3" },
+                    { title: "Faxe", file: "CHILLOUT SWEET LP/10Faxe.mp3" },
+                    { title: "Mucho más que amigo", file: "CHILLOUT SWEET LP/11Mucho mas que amigo.mp3" },
+                    { title: "Pincelada andaluza", file: "CHILLOUT SWEET LP/12Pincelada Andaluza.mp3" },
+                    { title: "Adelante", file: "CHILLOUT SWEET LP/13Ahead.mp3" },
+                    { title: "Otros niños", file: "CHILLOUT SWEET LP/14Otros niños (SDown).mp3" },
+                    { title: "Sendero a mi cabaña", file: "CHILLOUT SWEET LP/15Sendero a mi cabaña.mp3" },
+                    { title: "Buscándote, cold", file: "CHILLOUT SWEET LP/16Buscandote_ Cold.mp3" }
+                ]
+            }
+        };
+
+        let currentAlbumId = null;
+        let currentTrackIndex = 0;
+        const audio = new Audio();
+
+        audio.onplay = () => document.getElementById('musicPlayerPanel').classList.add('playing');
+        audio.onpause = () => document.getElementById('musicPlayerPanel').classList.remove('playing');
+        audio.onended = () => nextTrack();
+
+        function openPlayer(albumId) {
+            currentAlbumId = albumId;
+            const album = albums[albumId];
+            document.getElementById('playerTitle').innerText = album.title;
+            document.getElementById('playerSubtitle').innerText = album.artist;
+            document.getElementById('playerCover').src = album.cover;
+            
+            const tracklist = document.getElementById('tracklist');
+            tracklist.innerHTML = '';
+            album.tracks.forEach((track, index) => {
+                const li = document.createElement('li');
+                li.className = 'track-item';
+                li.innerHTML = `<span class="track-num">${String(index + 1).padStart(2, '0')}</span><span class="track-name">${track.title}</span>`;
+                li.onclick = () => { loadTrack(index); audio.play(); };
+                tracklist.appendChild(li);
+            });
+            
+            loadTrack(0);
+            document.getElementById('musicPlayerPanel').classList.add('active');
+        }
+
+        function closePlayer() {
+            audio.pause();
+            document.getElementById('musicPlayerPanel').classList.remove('active');
+        }
+
+        function loadTrack(index) {
+            currentTrackIndex = index;
+            const track = albums[currentAlbumId].tracks[index];
+            audio.src = track.file;
+            document.getElementById('currentTrackTitle').innerText = track.title;
+            
+            const items = document.querySelectorAll('.track-item');
+            items.forEach((item, i) => item.classList.toggle('active', i === index));
+        }
+
+        function togglePlay() {
+            if (audio.paused) audio.play();
+            else audio.pause();
+        }
+
+        function prevTrack() {
+            let index = currentTrackIndex - 1;
+            if (index < 0) index = albums[currentAlbumId].tracks.length - 1;
+            loadTrack(index);
+            audio.play();
+        }
+
+        function nextTrack() {
+            let index = currentTrackIndex + 1;
+            if (index >= albums[currentAlbumId].tracks.length) index = 0;
+            loadTrack(index);
+            audio.play();
+        }
+
+        // Sincronización de barra de progreso
+        audio.ontimeupdate = () => {
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                document.getElementById('progressFill').style.width = percent + '%';
+            }
+        };
+    </script>
+    <script src="js/app.js"></script>
 </body>
 </html>
