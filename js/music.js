@@ -56,15 +56,24 @@ function initPlayer() {
     const progressFill = document.getElementById('progressFill');
 
     if (playBtn) {
-        playBtn.onclick = togglePlay;
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlay();
+        });
     }
 
     if (prevBtn) {
-        prevBtn.onclick = prevTrack;
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevTrack();
+        });
     }
 
     if (nextBtn) {
-        nextBtn.onclick = nextTrack;
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextTrack();
+        });
     }
 
     if (progressBar) {
