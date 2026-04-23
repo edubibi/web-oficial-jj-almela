@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=v4.3-fix-buttons">
+    <link rel="stylesheet" href="css/style.css?v=v4.4-final-fix">
 </head>
 <body class="music-page">
 
@@ -118,13 +118,13 @@
                             </div>
                         </div>
 
-                        <div class="player-buttons">
-                            <button id="prevBtn" class="p-btn secondary"><i class="fas fa-step-backward"></i></button>
-                            <button id="playBtn" class="p-btn primary">
-                                <i class="fas fa-play play-icon"></i>
-                                <i class="fas fa-pause pause-icon"></i>
+                        <div class="player-buttons" style="position: relative; z-index: 10000;">
+                            <button id="prevBtn" class="p-btn secondary" onclick="prevTrack()"><i class="fas fa-step-backward" style="pointer-events: none;"></i></button>
+                            <button id="playBtn" class="p-btn primary" onclick="togglePlay()">
+                                <i class="fas fa-play play-icon" style="pointer-events: none;"></i>
+                                <i class="fas fa-pause pause-icon" style="pointer-events: none;"></i>
                             </button>
-                            <button id="nextBtn" class="p-btn secondary"><i class="fas fa-step-forward"></i></button>
+                            <button id="nextBtn" class="p-btn secondary" onclick="nextTrack()"><i class="fas fa-step-forward" style="pointer-events: none;"></i></button>
                         </div>
                     </div>
                 </div>
