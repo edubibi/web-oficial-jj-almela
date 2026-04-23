@@ -910,7 +910,7 @@ body {
 .music-player-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(124, 42, 59, 0.95); /* Burgundy Maroon Background */
+    background: rgba(249, 246, 238, 0.98); /* Fondo Hueso coherente con la web */
     backdrop-filter: blur(20px);
     z-index: 2000;
     display: flex;
@@ -1024,7 +1024,7 @@ body {
 .player-track-info h2 {
     font-family: var(--font-titulos);
     font-size: 2.2rem;
-    color: white;
+    color: var(--color-madera-oscura);
     margin-bottom: 5px;
     text-align: center;
 }
@@ -1087,7 +1087,7 @@ body {
 .p-btn {
     background: none;
     border: none;
-    color: white;
+    color: var(--color-madera-oscura);
     cursor: pointer;
     font-size: 1.8rem;
     transition: 0.3s;
@@ -1128,7 +1128,7 @@ body {
 
 .playlist-glass-card {
     height: 100%;
-    background: rgba(255, 255, 255, 0.08); /* Reverted from bone-style if changed */
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
     border: 3px solid white; /* Thick white border requested */
     border-radius: 30px;
@@ -1143,7 +1143,7 @@ body {
     margin-bottom: 25px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 12px;
-    color: var(--color-blanco); /* Corrected for Dark background */
+    color: var(--color-madera-oscura); /* Corrected for light background */
 }
 
 .player-tracklist {
@@ -1196,7 +1196,7 @@ body {
 .track-name {
     font-size: 1.05rem;
     font-weight: 500;
-    color: var(--color-blanco); /* White for dark theme */
+    color: var(--color-madera-oscura); /* Dark for light theme */
 }
 
 @media (max-width: 992px) {
@@ -1671,63 +1671,61 @@ body {
 }
 
 /* =========================================
-   REPRODUCTOR ULTRA-COMPACTO MÓVIL (v3.0)
+   REPRODUCTOR ULTRA-COMPACTO MÓVIL (v3.1)
    ========================================= */
 @media (max-width: 600px) {
     .music-player-overlay {
-        background: rgba(28, 5, 10, 0.99) !important;
-        backdrop-filter: blur(20px);
-        padding: 40px 10px 20px !important;
-        z-index: 99999 !important;
+        background: var(--color-hueso) !important;
+        padding: 60px 15px 20px !important;
     }
-    .close-player-btn {
-        top: 10px !important;
-        right: 10px !important;
-        background: rgba(0,0,0,0.5) !important;
-        width: 40px !important;
-        height: 40px !important;
-        font-size: 2rem !important;
-        border-radius: 50%;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
+    
+    .player-content-wrapper {
+        gap: 15px !important;
     }
-    .player-left h2 {
-        font-size: 1.2rem !important;
-        margin-bottom: 0.2rem !important;
+
+    .player-glass-card, .playlist-glass-card {
+        padding: 20px !important;
+        border-width: 2px !important;
+        border-radius: 15px !important;
     }
-    .player-left .album-subtitle {
-        font-size: 0.8rem !important;
-        margin-bottom: 0.5rem !important;
+
+    .player-main-cover {
+        width: 140px !important;
+        height: 140px !important;
+        margin-bottom: 15px !important;
     }
-    .cover-art-large, .player-main-cover {
-        width: 100px !important;
-        height: 100px !important;
-        margin: 0 auto 0.5rem !important;
+
+    .player-track-info h2 {
+        font-size: 1.4rem !important;
     }
-    .tracklist-container h3 {
-        font-size: 1rem !important;
-        margin: 0.5rem 0 !important;
-        text-align: center;
+
+    .album-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 20px !important;
     }
-    .tracklist {
-        max-height: 180px !important;
-        padding: 0 5px !important;
+
+    .player-buttons {
+        gap: 20px !important;
     }
+
+    .p-btn.primary {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .player-tracklist {
+        max-height: 250px !important; /* Límite para que no se desparrame */
+        padding-right: 5px !important;
+    }
+
     .track-item {
-        padding: 6px 12px !important;
-        margin-bottom: 4px !important;
+        padding: 10px !important;
+        margin-bottom: 6px !important;
     }
+
     .track-name {
-        font-size: 0.8rem !important;
-    }
-    .player-controls .main-btns i {
-        font-size: 1.2rem !important;
-    }
-    .player-controls .play-btn i {
-        font-size: 2.2rem !important;
-    }
-    .progress-container {
-        margin: 0.5rem 0 !important;
+        font-size: 0.9rem !important;
+        color: var(--color-madera-oscura) !important;
     }
 }
+
