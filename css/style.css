@@ -93,18 +93,81 @@ body {
     color: var(--color-burdeos);
 }
 
+.nav-links a.active {
+    color: #0066cc; /* Azul solicitado para indicar la página activa */
+    font-weight: 700;
+    border-bottom: 2px solid #0066cc;
+}
+
 /* =========================================
    EFECTO SINUSOIDAL EN EL MENÚ (Onda musical)
    ========================================= */
 /* Aplicamos geometría de onda seno a cada elemento de la lista para crear la curva que baja y luego sube */
-.nav-links li:nth-child(1) { transform: translateY(0px); }    /* Inicio */
-.nav-links li:nth-child(2) { transform: translateY(12px); }   /* Sobre Mí */
-.nav-links li:nth-child(3) { transform: translateY(20px); }   /* Mi música */
-.nav-links li:nth-child(4) { transform: translateY(14px); }   /* Mis vídeos */
-.nav-links li:nth-child(5) { transform: translateY(0px); }    /* Don't worry */
-.nav-links li:nth-child(6) { transform: translateY(-12px); }  /* Mis gustos */
-.nav-links li:nth-child(7) { transform: translateY(-20px); }  /* Imágenes */
-.nav-links li:nth-child(8) { transform: translateY(-10px); }  /* Contacto */
+@media (min-width: 993px) {
+    .nav-links li:nth-child(1) { transform: translateY(0px); }    /* Inicio */
+    .nav-links li:nth-child(2) { transform: translateY(12px); }   /* Sobre Mí */
+    .nav-links li:nth-child(3) { transform: translateY(20px); }   /* Mi música */
+    .nav-links li:nth-child(4) { transform: translateY(14px); }   /* Mis vídeos */
+    .nav-links li:nth-child(5) { transform: translateY(0px); }    /* Don't worry */
+    .nav-links li:nth-child(6) { transform: translateY(-12px); }  /* Mis gustos */
+    .nav-links li:nth-child(7) { transform: translateY(-20px); }  /* Imágenes */
+    .nav-links li:nth-child(8) { transform: translateY(-10px); }  /* Contacto */
+}
+
+/* =========================================
+   RESPONSIVE MENU (Mobile / Tablet)
+   ========================================= */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    color: var(--color-burdeos);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .mobile-menu-toggle {
+        display: block;
+        order: 2;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    .nav-links li {
+        transform: none !important; /* Desactivar efecto sinusoidal en móvil */
+    }
+
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+}
 
 /* =========================================
    ENTRADA / HERO SECTION (Glamour)
@@ -1549,4 +1612,122 @@ body {
     opacity: 0.15;
     z-index: 1;
     font-family: var(--font-titulos);
+}
+
+
+/* ARTIST GRID FOR COLABORACIONES */
+.artist-colab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.artist-colab-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(144, 12, 63, 0.1);
+    text-align: center;
+    padding-bottom: 1.5rem;
+}
+
+.artist-colab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-color: var(--color-burdeos);
+}
+
+.artist-colab-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.artist-colab-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.artist-colab-card:hover .artist-colab-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.artist-colab-card h4 {
+    font-family: var(--font-titulos);
+    font-size: 1.4rem;
+    color: var(--color-burdeos);
+    margin: 0.5rem 0;
+}
+
+.artist-colab-card p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    padding: 0 1rem;
+}
+
+/* =========================================
+   REPRODUCTOR ULTRA-COMPACTO MÓVIL (v3.0)
+   ========================================= */
+@media (max-width: 600px) {
+    .music-player-overlay {
+        background: rgba(28, 5, 10, 0.99) !important;
+        backdrop-filter: blur(20px);
+        padding: 40px 10px 20px !important;
+        z-index: 99999 !important;
+    }
+    .close-player-btn {
+        top: 10px !important;
+        right: 10px !important;
+        background: rgba(0,0,0,0.5) !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 2rem !important;
+        border-radius: 50%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .player-left h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .player-left .album-subtitle {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .cover-art-large, .player-main-cover {
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 auto 0.5rem !important;
+    }
+    .tracklist-container h3 {
+        font-size: 1rem !important;
+        margin: 0.5rem 0 !important;
+        text-align: center;
+    }
+    .tracklist {
+        max-height: 180px !important;
+        padding: 0 5px !important;
+    }
+    .track-item {
+        padding: 6px 12px !important;
+        margin-bottom: 4px !important;
+    }
+    .track-name {
+        font-size: 0.8rem !important;
+    }
+    .player-controls .main-btns i {
+        font-size: 1.2rem !important;
+    }
+    .player-controls .play-btn i {
+        font-size: 2.2rem !important;
+    }
+    .progress-container {
+        margin: 0.5rem 0 !important;
+    }
 }

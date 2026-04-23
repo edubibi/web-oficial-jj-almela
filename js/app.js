@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Navegación animada al hacer scroll (Sticky Nav)
     const nav = document.querySelector('.main-nav');
+    const menuToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -13,6 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
             nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
         }
+    });
+
+    // 1.1 Lógica del menú móvil
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Cambiar icono si es necesario
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Cerrar menú al hacer click en un enlace (para móviles)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
     });
 
     // 2. Smooth Scrolling para los enlaces del menú
