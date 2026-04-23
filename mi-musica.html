@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=v5.3-global-scope-fix">
+    <link rel="stylesheet" href="css/style.css?v=v5.4-playlist-fix">
 </head>
 <body class="music-page">
 
@@ -203,11 +203,11 @@
 
         let currentAlbumId = null;
         let currentTrackIndex = 0;
-        const audio = new Audio();
+        window.audio = new Audio();
 
-        audio.onplay = () => document.getElementById('musicPlayerPanel').classList.add('playing');
-        audio.onpause = () => document.getElementById('musicPlayerPanel').classList.remove('playing');
-        audio.onended = () => nextTrack();
+        window.audio.onplay = () => document.getElementById('musicPlayerPanel').classList.add('playing');
+        window.audio.onpause = () => document.getElementById('musicPlayerPanel').classList.remove('playing');
+        window.audio.onended = () => window.nextTrack();
 
         window.openAlbum = function(albumId) {
             currentAlbumId = albumId;
@@ -222,14 +222,14 @@
             if (albumElem) albumElem.innerText = album.title;
             if (artElem) artElem.src = album.cover;
             
-            const tracklist = document.getElementById('tracklist');
+            const tracklist = document.getElementById('trackListItems');
             if (tracklist) {
                 tracklist.innerHTML = '';
                 album.tracks.forEach((track, index) => {
                     const li = document.createElement('li');
                     li.className = 'track-item';
                     li.innerHTML = `<span class="track-num">${String(index + 1).padStart(2, '0')}</span><span class="track-name">${track.title}</span>`;
-                    li.onclick = () => { window.loadTrack(index); audio.play(); };
+                    li.onclick = () => { window.loadTrack(index); window.audio.play(); };
                     tracklist.appendChild(li);
                 });
             }
@@ -239,14 +239,14 @@
         };
 
         window.closeAlbum = function() {
-            audio.pause();
+            window.audio.pause();
             document.getElementById('musicPlayerPanel').classList.remove('active');
         };
 
         window.loadTrack = function(index) {
             currentTrackIndex = index;
             const track = albums[currentAlbumId].tracks[index];
-            audio.src = track.file;
+            window.audio.src = track.file;
             document.getElementById('currentTrackTitle').innerText = track.title;
             
             const items = document.querySelectorAll('.track-item');
@@ -254,28 +254,27 @@
         };
 
         window.togglePlay = function() {
-            if (audio.paused) audio.play();
-            else audio.pause();
+            if (window.audio.paused) window.audio.play();
+            else window.audio.pause();
         };
 
         window.prevTrack = function() {
             let index = currentTrackIndex - 1;
             if (index < 0) index = albums[currentAlbumId].tracks.length - 1;
             window.loadTrack(index);
-            audio.play();
+            window.audio.play();
         };
 
         window.nextTrack = function() {
             let index = currentTrackIndex + 1;
             if (index >= albums[currentAlbumId].tracks.length) index = 0;
             window.loadTrack(index);
-            audio.play();
+            window.audio.play();
         };
 
-        // Sincronización de barra de progreso
-        audio.ontimeupdate = () => {
-            if (audio.duration) {
-                const percent = (audio.currentTime / audio.duration) * 100;
+        window.audio.ontimeupdate = () => {
+            if (window.audio.duration) {
+                const percent = (window.audio.currentTime / window.audio.duration) * 100;
                 document.getElementById('progressFill').style.width = percent + '%';
             }
         };
