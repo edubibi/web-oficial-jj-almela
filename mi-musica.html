@@ -4,281 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Música | JJ Almela</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <!-- Iconos FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=v5.4-playlist-fix">
+    <link rel="stylesheet" href="css/style.css?v=v0.0-clean">
 </head>
 <body class="music-page">
-
-    <!-- Navegación -->
     <nav class="main-nav">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo_blanco.png" alt="JJ Almela Logo" class="nav-logo-img">
-                </a>
-            </div>
-                        <ul class="nav-links">
+        <div class="container">
+            <div class="logo">JJ ALMELA</div>
+            <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre-mi.html">Sobre Mí</a></li>
-                <li><a href="mi-musica.html" class="active">Mi Música</a></li>
-                <li><a href="mis-videos.html">Mis Vídeos</a></li>
-                <li><a href="colaboraciones.html">Colaboraciones</a></li>
-                <li><a href="mis-gustos.html">Mis gustos</a></li>
+                <li><a href="biografia.html">Biografía</a></li>
+                <li><a href="mi-musica.html" style="color: var(--color-azul);">Mi Música</a></li>
                 <li><a href="imagenes.html">Imágenes</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
-            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="music-hero">
         <div class="container">
-            <h1 class="glamour-title">Mi Obra Musical</h1>
-            <p class="subtitle-serif">Composiciones que trascienden el tiempo.</p>
+            <h1 class="glamour-title">Próximamente</h1>
+            <p class="subtitle-serif">Sección en mantenimiento.</p>
         </div>
     </header>
 
-    <!-- Albums Grid -->
-    <section class="albums-section">
-        <div class="container">
-            <div class="albums-grid">
-                
-                <!-- Álbum: ALM 1 -->
-                <div class="album-card-wrapper">
-                    <div class="album-card" onclick="openAlbum('alm-1')">
-                        <div class="album-cover-container">
-                            <img src="assets/images/CARATULAS ALMELA VIDEOS ANTERIORES/00BOAVISTA-MAGIC-1000.jpg" alt="Some Memories (ALM 1)" class="album-cover-img">
-                            <div class="album-overlay">
-                                <span class="play-icon-huge"><i class="fas fa-play"></i></span>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3>Some Memories (ALM 1)</h3>
-                            <div class="album-actions">
-                                <button class="btn-neon-mini" onclick="event.stopPropagation(); openAlbum('alm-1')">HAZ CLIK</button>
-                                <button class="btn-outline-mini">LIBRETO IR</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Álbum: ALM 2 -->
-                <div class="album-card-wrapper">
-                    <div class="album-card" onclick="openAlbum('alm-2')">
-                        <div class="album-cover-container">
-                            <img src="assets/images/chillout_sweet_cover.jpg" alt="Chillout Sweet (ALM 2)" class="album-cover-img">
-                            <div class="album-overlay">
-                                <span class="play-icon-huge"><i class="fas fa-play"></i></span>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3>Chillout Sweet (ALM 2)</h3>
-                            <div class="album-actions">
-                                <button class="btn-neon-mini" onclick="event.stopPropagation(); openAlbum('alm-2')">HAZ CLIK</button>
-                                <button class="btn-outline-mini">LIBRETO IR</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Fullscreen Player Overlay (Glassmorphism) -->
-    <div id="musicPlayerPanel" class="music-player-overlay">
-        <button class="close-player-btn" onclick="closeAlbum()">&times;</button>
-        
-        <div class="player-content-wrapper">
-            <!-- Left Side: Cover & Controls -->
-            <div class="player-left">
-                <div class="player-glass-card">
-                    <div class="player-cover-ring"></div>
-                    <img id="currentAlbumArt" src="" alt="Album Art" class="player-main-cover">
-                    
-                    <div class="player-track-info">
-                        <h2 id="currentTrackTitle">Título de la canción</h2>
-                        <p id="currentAlbumTitle" class="album-subtitle">Nombre del Álbum</p>
-                    </div>
-
-                    <div class="player-controls-area">
-                        <div class="player-progress-container">
-                            <div class="player-time-labels">
-                                <span id="currentTime">0:00</span>
-                                <span id="duration">0:00</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div id="progressFill" class="progress-fill"></div>
-                            </div>
-                        </div>
-
-                        <div class="player-buttons" style="position: relative; z-index: 10000; display: flex; align-items: center; justify-content: center; gap: 30px;">
-                            <a id="prevBtn" class="p-btn secondary" href="javascript:void(0)" onclick="prevTrack()" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-step-backward" style="pointer-events: none;"></i>
-                            </a>
-                            <a id="playBtn" class="p-btn primary" href="javascript:void(0)" onclick="togglePlay()" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-play play-icon" style="pointer-events: none;"></i>
-                                <i class="fas fa-pause pause-icon" style="pointer-events: none;"></i>
-                            </a>
-                            <a id="nextBtn" class="p-btn secondary" href="javascript:void(0)" onclick="nextTrack()" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-step-forward" style="pointer-events: none;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side: Tracklist -->
-            <div class="player-right">
-                <div class="playlist-glass-card">
-                    <h3>Lista de Pistas</h3>
-                    <ul id="trackListItems" class="player-tracklist">
-                        <!-- Dynamic items -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PIE DE PÁGINA (Footer) -->
     <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                &copy; jjalmela 2026
-            </div>
-            <div class="footer-right">
-                Diseños Eduardo Ramírez & AnG
-            </div>
+        <div class="container">
+            <p>&copy; 2024 JJ Almela. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Lógica integrada v5.0 - Sin archivos externos para evitar bloqueos
-        const albums = {
-            'alm-1': {
-                title: 'Some Memories (ALM 1)',
-                artist: 'JJ Almela',
-                cover: 'assets/images/CARATULAS ALMELA VIDEOS ANTERIORES/00BOAVISTA-MAGIC-1000.jpg',
-                tracks: [
-                    { title: "Tres Encuentros", file: "SOME MEMORIES LP/01Tres Encuentros.mp3" },
-                    { title: "Boavista Magic", file: "SOME MEMORIES LP/02Boavista Magic.mp3" },
-                    { title: "Buscándote", file: "SOME MEMORIES LP/03Buscándote.mp3" },
-                    { title: "Una Vida Sin Ti", file: "SOME MEMORIES LP/04Una Vida Sin Ti.mp3" },
-                    { title: "Mi Calle y Tu", file: "SOME MEMORIES LP/05Mi Calle y Tu.mp3" },
-                    { title: "Matar al Ángel", file: "SOME MEMORIES LP/06Matar al Ángel.mp3" },
-                    { title: "No Se por Que Te Perdí", file: "SOME MEMORIES LP/07No Se por Que Te Perdí.mp3" }
-                ]
-            },
-            'alm-2': {
-                title: 'Chillout Sweet (ALM 2)',
-                artist: 'JJ Almela',
-                cover: 'assets/images/chillout_sweet_cover.jpg',
-                tracks: [
-                    { title: "Sin Fronteras", file: "CHILLOUT SWEET LP/01Sin Fronteras (DropOut).mp3" },
-                    { title: "Another day", file: "CHILLOUT SWEET LP/02Another day.mp3" },
-                    { title: "Sierra Gudar", file: "CHILLOUT SWEET LP/03Sierra Gudar.mp3" },
-                    { title: "Andanzas de Rocinante", file: "CHILLOUT SWEET LP/04Andanzas de Rocinante.mp3" },
-                    { title: "Chill below zero", file: "CHILLOUT SWEET LP/05Chill below zero.mp3" },
-                    { title: "Main Memory", file: "CHILLOUT SWEET LP/06Main Memory.mp3" },
-                    { title: "Long road", file: "CHILLOUT SWEET LP/07Long road.mp3" },
-                    { title: "Desert Route", file: "CHILLOUT SWEET LP/08Desert Route.mp3" },
-                    { title: "Estación de paso", file: "CHILLOUT SWEET LP/09Estación_de_paso.mp3" },
-                    { title: "Faxe", file: "CHILLOUT SWEET LP/10Faxe.mp3" },
-                    { title: "Mucho más que amigo", file: "CHILLOUT SWEET LP/11Mucho mas que amigo.mp3" },
-                    { title: "Pincelada andaluza", file: "CHILLOUT SWEET LP/12Pincelada Andaluza.mp3" },
-                    { title: "Adelante", file: "CHILLOUT SWEET LP/13Ahead.mp3" },
-                    { title: "Otros niños", file: "CHILLOUT SWEET LP/14Otros niños (SDown).mp3" },
-                    { title: "Sendero a mi cabaña", file: "CHILLOUT SWEET LP/15Sendero a mi cabaña.mp3" },
-                    { title: "Buscándote, cold", file: "CHILLOUT SWEET LP/16Buscandote_ Cold.mp3" }
-                ]
-            }
-        };
-
-        let currentAlbumId = null;
-        let currentTrackIndex = 0;
-        window.audio = new Audio();
-
-        window.audio.onplay = () => document.getElementById('musicPlayerPanel').classList.add('playing');
-        window.audio.onpause = () => document.getElementById('musicPlayerPanel').classList.remove('playing');
-        window.audio.onended = () => window.nextTrack();
-
-        window.openAlbum = function(albumId) {
-            currentAlbumId = albumId;
-            const album = albums[albumId];
-            
-            // Corregir IDs para que coincidan con el HTML
-            const titleElem = document.getElementById('currentTrackTitle');
-            const albumElem = document.getElementById('currentAlbumTitle');
-            const artElem = document.getElementById('currentAlbumArt');
-            
-            if (titleElem) titleElem.innerText = album.tracks[0].title;
-            if (albumElem) albumElem.innerText = album.title;
-            if (artElem) artElem.src = album.cover;
-            
-            const tracklist = document.getElementById('trackListItems');
-            if (tracklist) {
-                tracklist.innerHTML = '';
-                album.tracks.forEach((track, index) => {
-                    const li = document.createElement('li');
-                    li.className = 'track-item';
-                    li.innerHTML = `<span class="track-num">${String(index + 1).padStart(2, '0')}</span><span class="track-name">${track.title}</span>`;
-                    li.onclick = () => { window.loadTrack(index); window.audio.play(); };
-                    tracklist.appendChild(li);
-                });
-            }
-            
-            window.loadTrack(0);
-            document.getElementById('musicPlayerPanel').classList.add('active');
-        };
-
-        window.closeAlbum = function() {
-            window.audio.pause();
-            document.getElementById('musicPlayerPanel').classList.remove('active');
-        };
-
-        window.loadTrack = function(index) {
-            currentTrackIndex = index;
-            const track = albums[currentAlbumId].tracks[index];
-            window.audio.src = track.file;
-            document.getElementById('currentTrackTitle').innerText = track.title;
-            
-            const items = document.querySelectorAll('.track-item');
-            items.forEach((item, i) => item.classList.toggle('active', i === index));
-        };
-
-        window.togglePlay = function() {
-            if (window.audio.paused) window.audio.play();
-            else window.audio.pause();
-        };
-
-        window.prevTrack = function() {
-            let index = currentTrackIndex - 1;
-            if (index < 0) index = albums[currentAlbumId].tracks.length - 1;
-            window.loadTrack(index);
-            window.audio.play();
-        };
-
-        window.nextTrack = function() {
-            let index = currentTrackIndex + 1;
-            if (index >= albums[currentAlbumId].tracks.length) index = 0;
-            window.loadTrack(index);
-            window.audio.play();
-        };
-
-        window.audio.ontimeupdate = () => {
-            if (window.audio.duration) {
-                const percent = (window.audio.currentTime / window.audio.duration) * 100;
-                document.getElementById('progressFill').style.width = percent + '%';
-            }
-        };
-    </script>
-    <script src="js/app.js"></script>
 </body>
 </html>
