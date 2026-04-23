@@ -968,7 +968,7 @@ body {
 
 .player-glass-card {
     flex: 1;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.6);
     border: 3px solid white; /* Thick white border requested */
     border-radius: 30px;
     padding: 40px;
@@ -1128,7 +1128,7 @@ body {
 
 .playlist-glass-card {
     height: 100%;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.6); /* Coherente con la parte izquierda */
     backdrop-filter: blur(20px);
     border: 3px solid white; /* Thick white border requested */
     border-radius: 30px;
@@ -1624,7 +1624,7 @@ body {
 }
 
 .artist-colab-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.6); /* Más opaco para fondo claro */
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
