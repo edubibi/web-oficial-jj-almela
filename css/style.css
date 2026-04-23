@@ -1743,5 +1743,9 @@ body {
         right: 10px !important;
         font-size: 2rem !important;
     }
+
+    .p-btn.primary:hover, .p-btn.secondary:hover {
+        transform: none !important; /* Evitar que el efecto visual bloquee el clic en móviles */
+    }
 }
 

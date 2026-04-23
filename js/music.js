@@ -153,21 +153,34 @@ function loadTrack(index) {
 }
 
 function togglePlay() {
-    if (isPlaying) pauseTrack();
-    else playTrack();
+    if (!audio.src || audio.src.endsWith('undefined')) {
+        // Si no hay nada cargado, cargamos la primera
+        loadTrack(0);
+    }
+    
+    if (audio.paused) {
+        audio.play().then(() => {
+            isPlaying = true;
+            document.getElementById('musicPlayerPanel').classList.add('playing');
+        }).catch(err => console.log("Error playing:", err));
+    } else {
+        audio.pause();
+        isPlaying = false;
+        document.getElementById('musicPlayerPanel').classList.remove('playing');
+    }
 }
 
 function playTrack() {
     if (!audio.src || audio.src.endsWith('undefined')) return;
-    isPlaying = true;
-    audio.play();
-    document.getElementById('musicPlayerPanel').classList.add('playing');
-    // Update icons if needed
+    audio.play().then(() => {
+        isPlaying = true;
+        document.getElementById('musicPlayerPanel').classList.add('playing');
+    }).catch(err => console.log("Error playing:", err));
 }
 
 function pauseTrack() {
-    isPlaying = false;
     audio.pause();
+    isPlaying = false;
     document.getElementById('musicPlayerPanel').classList.remove('playing');
 }
 
