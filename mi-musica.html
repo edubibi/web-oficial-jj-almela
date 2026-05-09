@@ -4,33 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Música | JJ Almela</title>
-    <link rel="stylesheet" href="css/style.css?v=v0.0-clean">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=v5.5-music-grid">
 </head>
-<body class="music-page">
+<body class="bg-brick-white music-page">
+
+    <!-- Navegación Compartida -->
     <nav class="main-nav">
-        <div class="container">
-            <div class="logo">JJ ALMELA</div>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo_blanco.png" alt="JJ Almela Logo" class="nav-logo-img">
+                </a>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="biografia.html">Biografía</a></li>
-                <li><a href="mi-musica.html" style="color: var(--color-azul);">Mi Música</a></li>
-                <li><a href="imagenes.html">Imágenes</a></li>
+                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="mi-musica.html" class="active">Mi Música</a></li>
+                <li><a href="mis-videos.html">Mis Vídeos</a></li>
+                <li><a href="colaboraciones.html">Colaboraciones</a></li>
+                <li><a href="mis-gustos.html">Mis gustos</a></li>
+                <li><a href="imagenes.html">Diario de a bordo</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <header class="music-hero">
         <div class="container">
-            <h1 class="glamour-title">Próximamente</h1>
-            <p class="subtitle-serif">Sección en mantenimiento.</p>
+            <h1 class="glamour-title">Mi Discografía</h1>
+            <p class="subtitle-serif">Un viaje a través de 7 universos sonoros</p>
         </div>
     </header>
 
-    <footer class="main-footer">
+    <!-- SECCIÓN DE DISCOGRAFÍA -->
+    <section class="albums-section">
         <div class="container">
-            <p>&copy; 2024 JJ Almela. Todos los derechos reservados.</p>
+            <div class="lp-grid">
+                <!-- 01 Memories -->
+                <div class="lp-card">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/images/PORTADAS DISCOS/MEMORIES.png" alt="01 Memories" class="lp-img">
+                        <div class="lp-number">01</div>
+                        <div class="lp-overlay">
+                            <h3>Memories</h3>
+                            <p>Explorar Álbum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 NS: Spain -->
+                <div class="lp-card">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/images/PORTADAS DISCOS/NONETY SPAIN.png" alt="02 NS Spain" class="lp-img">
+                        <div class="lp-number">02</div>
+                        <div class="lp-overlay">
+                            <h3>NS: Spain</h3>
+                            <p>Explorar Álbum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03 Chillout: SWEET -->
+                <div class="lp-card">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/images/PORTADAS DISCOS/Chillout SWEET.png" alt="03 Chillout Sweet" class="lp-img">
+                        <div class="lp-number">03</div>
+                        <div class="lp-overlay">
+                            <h3>Chillout: SWEET</h3>
+                            <p>Explorar Álbum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 JAZZ -->
+                <div class="lp-card">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/images/PORTADAS DISCOS/JAZZ OR NOT TO BE.png" alt="04 JAZZ" class="lp-img">
+                        <div class="lp-number">04</div>
+                        <div class="lp-overlay">
+                            <h3>JAZZ</h3>
+                            <p>Explorar Álbum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05 CLASSIC 1 -->
+                <div class="lp-card">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/images/PORTADAS DISCOS/CLASIC.png" alt="05 CLASSIC 1" class="lp-img">
+                        <div class="lp-number">05</div>
+                        <div class="lp-overlay">
+                            <h3>CLASSIC 1</h3>
+                            <p>Explorar Álbum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 06 WORLD SONGS -->
+                <div class="lp-card">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/images/PORTADAS DISCOS/WORLDS-SONGS.jpg" alt="06 WORLD SONGS" class="lp-img">
+                        <div class="lp-number">06</div>
+                        <div class="lp-overlay">
+                            <h3>WORLD SONGS</h3>
+                            <p>Explorar Álbum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 07 COVER 4 YOU -->
+                <div class="lp-card lp-colab">
+                    <div class="lp-poster-wrapper" style="border: 1px solid var(--color-burdeos);">
+                        <img src="assets/images/PORTADAS DISCOS/COVER4YOU.jpg" alt="07 COVER 4 YOU" class="lp-img">
+                        <div class="lp-number">07</div>
+                        <div class="lp-overlay" style="background: linear-gradient(to top, rgba(124, 42, 59, 0.9) 0%, transparent 100%);">
+                            <h3>COVER 4 YOU</h3>
+                            <p>Ver Proyecto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA (Footer) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                &copy; jjalmela 2026
+            </div>
+            <div class="footer-right">
+                Diseños Eduardo Ramírez & AnG
+            </div>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
 </body>
 </html>

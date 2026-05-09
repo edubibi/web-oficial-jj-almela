@@ -3,90 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJ Almela | En Construcción</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #FFB800;
-            --dark: #0A0E27;
-            --text: #d0d8f0;
-        }
-
-        body {
-            background-color: var(--dark);
-            color: var(--text);
-            font-family: 'Outfit', sans-serif;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .container {
-            padding: 2rem;
-            max-width: 600px;
-            border: 1px solid rgba(255, 184, 0, 0.1);
-            border-radius: 12px;
-            background: rgba(13, 18, 40, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .divider {
-            width: 50px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 2rem auto;
-        }
-
-        .status {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gold);
-            opacity: 0.6;
-        }
-
-        /* Subtle animation */
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-            100% { opacity: 0.4; }
-        }
-
-        .pulse {
-            animation: pulse 3s infinite ease-in-out;
-        }
-    </style>
+    <title>JJ Almela | Web Oficial | Compositor y Productor Musical</title>
+    <meta name="description" content="Bienvenido al Universo Musical de JJ Almela. Compositor, productor y pianista. Explora su discografía, vídeos y su Diario de a bordo.">
+    <!-- Google Fonts para elegancia y glamour -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=force-math-4">
 </head>
 <body>
 
-    <div class="container">
-        <div class="status pulse">Próximamente</div>
-        <h1>JJ Almela</h1>
-        <div class="divider"></div>
-        <p>Estamos trabajando en algo especial.<br>Música, elegancia y producción en proceso.</p>
-        <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.5;">© 2026 JJ Almela · Universo EDUSSE</p>
-    </div>
+    <!-- Navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo_blanco.png" alt="JJ Almela Logo" class="nav-logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="mi-musica.html">Mi música</a></li>
+                <li><a href="mis-videos.html">Mis vídeos</a></li>
+                <li><a href="colaboraciones.html">Colaboraciones</a></li>
+                <li><a href="mis-gustos.html">Mis gustos</a></li>
+                <li><a href="imagenes.html">Diario de a bordo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- Entrada / Hero Section (Glamour y Elegancia) -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-layout">
+            <!-- Margen 22%: Espacio Reservado para Texto Izquierdo (Slogan) -->
+            <div class="left-margin">
+                <div class="hero-claim-container">
+                    <h1 class="hero-claim">Música<br>que acaricia<br>el alma</h1>
+                </div>
+            </div>
+            
+            <!-- Centro 72%: Foto principal Gigante con Composición de Capas -->
+            <div class="center-image">
+                <div class="photo-composition">
+                    <!-- Capa 1: Fondo Piano -->
+                    <img src="assets/images/piano_cola_concert.png" alt="Concierto Piano" class="giant-photo base-layer">
+                    
+                    <!-- Capa 2: Tira vertical de la chica en escalera (Opacidad 72%) -->
+                    <img src="assets/images/tira_ chica_escalera.png" alt="Chica bajando escalera" class="overlay-layer">
+                </div>
+            </div>
+            
+            <!-- Margen 8%: Iconos Redes Sociales Verticales -->
+            <div class="right-margin">
+                <div class="social-vertical">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://spotify.com" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                    <a href="mailto:correo@jjalmela.com" aria-label="Contacto"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA (Footer) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                &copy; jjalmela 2026
+            </div>
+            <div class="footer-right">
+                Diseños Eduardo Ramírez & AnG
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
 </body>
 </html>
-

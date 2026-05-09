@@ -1,0 +1,13 @@
+# Ignorar proyectos de Audacity pesados
+*.aup3
+*.aup
+*_data/
+
+# Ignorar archivos temporales de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorar backups
+backup/
+node_modules/
