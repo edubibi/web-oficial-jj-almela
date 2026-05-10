@@ -270,6 +270,20 @@ const audioData = {
             { title: "People gotta move", src: "assets/audio/AESWING/People gotta move.mp3" },
             { title: "Rikki dont lose that number", src: "assets/audio/AESWING/Rikki dont lose that number.mp3" }
         ]
+    },
+    world: {
+        title: "WORLD SONGS",
+        cover: "assets/images/PORTADAS DISCOS/WORLDS-SONGS.jpg",
+        tracks: [
+            { title: "Dime cuando", src: "assets/audio/WORLD SONG ALMELA/01Dime cuando.mp3" },
+            { title: "Che será", src: "assets/audio/WORLD SONG ALMELA/02Che será.mp3" },
+            { title: "Just the way you are", src: "assets/audio/WORLD SONG ALMELA/03Just the way you are.mp3" },
+            { title: "Chanter pour Ceux", src: "assets/audio/WORLD SONG ALMELA/04Chanter pour Ceux.mp3" },
+            { title: "Georgy porgy", src: "assets/audio/WORLD SONG ALMELA/05Georgy porgy.mp3" },
+            { title: "Only you", src: "assets/audio/WORLD SONG ALMELA/06Only you.mp3" },
+            { title: "After the love has gone", src: "assets/audio/WORLD SONG ALMELA/07After the love has gone.mp3" },
+            { title: "Cést si bon", src: "assets/audio/WORLD SONG ALMELA/08Cést si bon.mp3" }
+        ]
     }
 };
 
