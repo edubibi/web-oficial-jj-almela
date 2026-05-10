@@ -177,7 +177,7 @@ function toggleDetails(targetId) {
 const audioData = {
     memories: {
         title: "Memories",
-        cover: "assets/images/PORTADAS DISCOS/MEMORIES.png",
+        cover: "assets/images/some-memories-portada-sección.jpg",
         tracks: [
             { title: "Tres Encuentros", src: "assets/audio/SOME MEMORIES LP/01Tres Encuentros.mp3" },
             { title: "Boavista Magic", src: "assets/audio/SOME MEMORIES LP/02Boavista Magic.mp3" },
