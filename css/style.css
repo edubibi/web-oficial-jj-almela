@@ -1983,7 +1983,7 @@ body {
 }
 
 .audio-modal-content {
-    background: linear-gradient(145deg, rgba(245, 230, 211, 0.85), rgba(232, 211, 186, 0.90)), url('../images/fondo-reproductor.jpg');
+    background: linear-gradient(145deg, rgba(245, 230, 211, 0.85), rgba(232, 211, 186, 0.90)), url('../assets/images/fondo-reproductor.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
