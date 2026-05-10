@@ -48,61 +48,61 @@
         <div class="container">
             <div class="lp-grid">
                 <!-- 01 Memories -->
-                <div class="lp-card">
+                <div class="lp-card" onclick="openAudioPlayer('memories')" style="cursor: pointer;">
                     <div class="lp-poster-wrapper">
                         <img src="assets/images/PORTADAS DISCOS/MEMORIES.png" alt="01 Memories" class="lp-img">
                         <div class="lp-number">01</div>
                         <div class="lp-overlay">
                             <h3>Memories</h3>
-                            <p>Explorar Álbum</p>
+                            <p><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Escuchar Álbum</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 02 NS: Spain -->
-                <div class="lp-card">
+                <div class="lp-card" onclick="openAudioPlayer('ninety')" style="cursor: pointer;">
                     <div class="lp-poster-wrapper">
                         <img src="assets/images/PORTADAS DISCOS/NONETY SPAIN.png" alt="02 NS Spain" class="lp-img">
                         <div class="lp-number">02</div>
                         <div class="lp-overlay">
                             <h3>NS: Spain</h3>
-                            <p>Explorar Álbum</p>
+                            <p><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Escuchar Álbum</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 03 Chillout: SWEET -->
-                <div class="lp-card">
+                <div class="lp-card" onclick="openAudioPlayer('chillout')" style="cursor: pointer;">
                     <div class="lp-poster-wrapper">
                         <img src="assets/images/PORTADAS DISCOS/Chillout SWEET.png" alt="03 Chillout Sweet" class="lp-img">
                         <div class="lp-number">03</div>
                         <div class="lp-overlay">
                             <h3>Chillout: SWEET</h3>
-                            <p>Explorar Álbum</p>
+                            <p><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Escuchar Álbum</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 04 JAZZ -->
-                <div class="lp-card">
+                <div class="lp-card" onclick="openAudioPlayer('jazz')" style="cursor: pointer;">
                     <div class="lp-poster-wrapper">
                         <img src="assets/images/PORTADAS DISCOS/JAZZ OR NOT TO BE.png" alt="04 JAZZ" class="lp-img">
                         <div class="lp-number">04</div>
                         <div class="lp-overlay">
                             <h3>JAZZ</h3>
-                            <p>Explorar Álbum</p>
+                            <p><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Escuchar Álbum</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 05 CLASSIC 1 -->
-                <div class="lp-card">
+                <div class="lp-card" onclick="openAudioPlayer('classic')" style="cursor: pointer;">
                     <div class="lp-poster-wrapper">
                         <img src="assets/images/PORTADAS DISCOS/CLASIC.png" alt="05 CLASSIC 1" class="lp-img">
                         <div class="lp-number">05</div>
                         <div class="lp-overlay">
                             <h3>CLASSIC 1</h3>
-                            <p>Explorar Álbum</p>
+                            <p><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Escuchar Álbum</p>
                         </div>
                     </div>
                 </div>
@@ -119,14 +119,14 @@
                     </div>
                 </div>
 
-                <!-- 07 COVER 4 YOU -->
-                <div class="lp-card lp-colab">
-                    <div class="lp-poster-wrapper" style="border: 1px solid var(--color-burdeos);">
-                        <img src="assets/images/PORTADAS DISCOS/COVER4YOU.jpg" alt="07 COVER 4 YOU" class="lp-img">
+                <!-- 07 AESWING -->
+                <div class="lp-card" onclick="openAudioPlayer('aeswing')" style="cursor: pointer;">
+                    <div class="lp-poster-wrapper">
+                        <img src="assets/audio/AESWING/aeswing track COVERS 4 YOU.jpg" alt="07 AESWING" class="lp-img">
                         <div class="lp-number">07</div>
-                        <div class="lp-overlay" style="background: linear-gradient(to top, rgba(124, 42, 59, 0.9) 0%, transparent 100%);">
-                            <h3>COVER 4 YOU</h3>
-                            <p>Ver Proyecto</p>
+                        <div class="lp-overlay">
+                            <h3>AESWING</h3>
+                            <p><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Escuchar Álbum</p>
                         </div>
                     </div>
                 </div>
@@ -145,6 +145,47 @@
             </div>
         </div>
     </footer>
+
+    <!-- MODAL DEL REPRODUCTOR DE AUDIO -->
+    <div id="audio-player-modal" class="audio-modal">
+        <div class="audio-modal-content">
+            <button class="close-audio-modal" onclick="closeAudioPlayer()" aria-label="Cerrar reproductor"><i class="fas fa-times"></i></button>
+            
+            <div class="audio-player-layout">
+                <!-- Columna Izquierda: Carátula e info -->
+                <div class="audio-cover-col">
+                    <img id="ap-cover" src="" alt="Album Cover" class="ap-cover-img">
+                    <h2 id="ap-album-title" class="ap-album-title">Título del Álbum</h2>
+                </div>
+                
+                <!-- Columna Derecha: Controles y Lista -->
+                <div class="audio-playlist-col">
+                    <div class="ap-current-info">
+                        <h3 id="ap-track-title" class="ap-track-title">Selecciona una pista</h3>
+                        <div class="ap-progress-container">
+                            <span id="ap-current-time">0:00</span>
+                            <div class="ap-progress-bar" id="ap-progress-bar" onclick="seekAudio(event)">
+                                <div class="ap-progress-fill" id="ap-progress-fill"></div>
+                            </div>
+                            <span id="ap-duration">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ap-controls">
+                        <button onclick="prevTrack()" class="ap-control-btn"><i class="fas fa-step-backward"></i></button>
+                        <button onclick="togglePlay()" id="ap-play-btn" class="ap-control-btn ap-play-btn"><i class="fas fa-play"></i></button>
+                        <button onclick="nextTrack()" class="ap-control-btn"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                    
+                    <div class="ap-tracklist-container">
+                        <ul id="ap-tracklist" class="ap-tracklist">
+                            <!-- Las pistas se inyectan por JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/app.js"></script>

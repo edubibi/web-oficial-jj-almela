@@ -1957,3 +1957,307 @@ body {
     }
 }
 
+/* =========================================
+   REPRODUCTOR DE AUDIO ELEGANTE
+   ========================================= */
+.audio-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 15, 10, 0.7); /* Fondo más claro y cálido translúcido */
+    backdrop-filter: blur(8px); /* Efecto cristal / Glassmorphism */
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.audio-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.audio-modal-content {
+    background: linear-gradient(145deg, #F5E6D3, #E8D3BA); /* Beige caramelo claro */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 900px;
+    height: 80vh;
+    max-height: 600px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.audio-modal.show .audio-modal-content {
+    transform: translateY(0);
+}
+
+.close-audio-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--color-madera-oscura);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-audio-modal:hover {
+    color: var(--color-burdeos);
+    transform: scale(1.1);
+}
+
+.audio-player-layout {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* Columna Izquierda: Carátula */
+.audio-cover-col {
+    width: 40%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ap-cover-img {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    margin-bottom: 1.5rem;
+}
+
+.ap-album-title {
+    font-family: var(--font-titulos);
+    color: var(--color-madera-oscura);
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Columna Derecha: Controles y Lista */
+.audio-playlist-col {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background: transparent;
+}
+
+.ap-current-info {
+    margin-bottom: 1.5rem;
+}
+
+.ap-track-title {
+    color: var(--color-texto-principal);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ap-progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    font-size: 0.8rem;
+    font-family: monospace;
+}
+
+.ap-progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: height 0.2s ease;
+}
+
+.ap-progress-bar:hover {
+    height: 6px;
+}
+
+.ap-progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-burdeos);
+    border-radius: 2px;
+    position: relative;
+}
+
+.ap-progress-fill::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-hueso);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.ap-progress-bar:hover .ap-progress-fill::after {
+    transform: translateY(-50%) scale(1);
+}
+
+.ap-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.ap-control-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-madera-oscura);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.ap-control-btn:hover {
+    color: var(--color-burdeos);
+    transform: scale(1.1);
+}
+
+.ap-play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-burdeos);
+    color: var(--color-hueso);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(124, 42, 59, 0.4);
+}
+
+.ap-play-btn:hover {
+    background-color: #923447;
+    color: white;
+}
+
+/* Lista de Canciones */
+.ap-tracklist-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Scrollbar personalizado para la lista */
+.ap-tracklist-container::-webkit-scrollbar {
+    width: 4px;
+}
+.ap-tracklist-container::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+}
+.ap-tracklist-container::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.ap-tracklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ap-track-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.ap-track-item:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--color-texto-principal);
+}
+
+.ap-track-item.active {
+    background-color: rgba(124, 42, 59, 0.1); /* Burdeos transparente */
+    color: var(--color-burdeos);
+    border-left: 3px solid var(--color-burdeos);
+}
+
+.ap-track-number {
+    width: 30px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.ap-track-item.active .ap-track-number {
+    color: var(--color-burdeos);
+    opacity: 1;
+}
+
+.ap-track-name {
+    flex-grow: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .audio-player-layout {
+        flex-direction: column;
+    }
+    
+    .audio-cover-col {
+        width: 100%;
+        padding: 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .ap-cover-img {
+        max-width: 150px;
+        margin-bottom: 1rem;
+    }
+    
+    .audio-playlist-col {
+        width: 100%;
+        padding: 1.5rem;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+    
+    .audio-modal-content {
+        height: 90vh;
+        max-height: 800px;
+    }
+}
