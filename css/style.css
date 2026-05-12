@@ -417,7 +417,117 @@ body {
     color: var(--color-burdeos);
 }
 
-/* Responsividad para móviles */
+/* =========================================
+   ESTILOS PARA DISCOGRAFÍA (Mi Música)
+   ========================================= */
+.lp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.lp-card {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.lp-poster-wrapper {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lp-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    opacity: 0.9;
+}
+
+.lp-number {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-family: var(--font-titulos);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    z-index: 2;
+    background: rgba(0,0,0,0.4);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.lp-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    color: white;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.lp-overlay h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+}
+
+.lp-overlay p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.lp-card:hover {
+    transform: translateY(-15px) scale(1.02);
+}
+
+.lp-card:hover .lp-img {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.lp-card:hover .lp-overlay {
+    transform: translateY(0);
+}
+
+/* Responsividad para móviles (2 columnas para álbumes) */
+@media (max-width: 600px) {
+    .lp-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+        padding: 15px !important;
+        margin-top: 20px !important; /* Separación sana del texto */
+    }
+    
+    .lp-overlay h3 {
+        font-size: 0.9rem;
+    }
+    
+    .lp-overlay p {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+    
+    .lp-overlay {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* Responsividad para móviles (vídeos) */
 @media (max-width: 768px) {
     .video-premium-grid {
         grid-template-columns: 1fr;
@@ -1380,11 +1490,17 @@ body {
 
     /* Hero & Bio Sections */
     .hero-section, 
-    .music-hero, 
     .bio-section-red-brick {
-        padding-top: 320px !important; /* Reducido ya que el menú ahora sube al hacer scroll */
+        padding-top: 320px !important; 
         height: auto !important;
         min-height: 100vh;
+    }
+
+    .music-hero {
+        padding-top: 240px !important; /* Punto medio para que no choque con el logo */
+        padding-bottom: 30px !important;
+        min-height: auto !important;
+        height: auto !important;
     }
 
     .hero-layout, .bio-flex-layout {
